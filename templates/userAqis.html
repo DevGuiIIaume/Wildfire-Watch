@@ -1,0 +1,11 @@
+{% extends "home.html" %}
+
+{% block userAqis %}
+<h3>Your Time Zones</h1>
+
+{% for key, value in userAqis.items() %}
+    <div><b>Zip Code: {{ key }}</b></div>
+    <div>AQI: {{ value }}</div>
+{% endfor %}
+
+{% endblock %}

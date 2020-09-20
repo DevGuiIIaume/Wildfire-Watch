@@ -1,0 +1,63 @@
+{% extends "index.html" %}
+
+
+{% block home %} 
+    <section id="one" class="wrapper style1">
+
+        <div class="image fit flush">
+            <img src="static/images/pic01.jpg" alt="" />
+        </div>
+        <header class="special">
+            <h2>Our Mission</h2>
+            <p>Keeping the public informed on their current local air quality</p>
+        </header>
+        <div class="content">
+            <p>As of September 20 2020, there are currently 79 large bushfires in the United States, burning over 3 million hectares of land.
+                 Five of the ten largest recorded bushfires have raged during this year's fire season, with the incidence of fires projected to 
+                 further increase as the global climate warms, according to the US Government's Global Change Research Program. These burning
+                 bushfires produce fine particulate matter that can be hazardous to the lungs. An air quality index (AQI) is used to communicate
+                 the level of air polution to the public, with the health risk increasing as air quality index increases.</p>
+            <p>Wildfire Watch is capable of sending you SMS alerts when your local AQI breaches a hazardous level threshold. Additionally, you can
+                search for the local AQI for a desired zip code at any time. </p>
+            <!--
+                <p><b>The AQI at your location is: {{ currAqi }}</b></p>
+                <p><b>The zip code at your location is: {{ currGeo }}</b></p>
+            -->
+            
+            </br>
+            {% if loggedIn %}
+                <h3>Your Time Zones</h1>
+                {% for key, value in userAqis.items() %}
+                    <div><b>Zip Code: {{ key }}</b></div>
+                    <div>AQI: {{ value }}</div>
+                {% endfor %}
+
+            {% else %}
+                <style>
+                    .user-form {
+                    margin: 20px;
+                    padding: 20px;
+                }
+                </style>
+                
+                <div class="user-form">
+                    <form action="/" method="POST">
+                        <b>Zip Code:</b> <input type="text" name="searchboxzip">
+                        <div style="line-height:150%;">
+                            <br>
+                        </div>
+                        <input type="submit" value="Submit">
+                    </form>
+        
+                </div>
+
+            {% endif %}
+            {% if z %}
+                <div>The AQI in {{pos}} is: {{z}}</div>
+            {% endif %}
+            
+            
+        </div>
+        
+    </section>
+{% endblock %}

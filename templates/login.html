@@ -1,0 +1,27 @@
+{% extends "index.html" %}
+
+{% block login %}
+<style>
+    .user-form {
+	margin: 20px;
+	padding: 20px;
+}
+</style>
+<div class="user-form">
+    <h1>Log In</h1>
+
+    <h2>{{ error }}</h2>
+
+    <form action="/login" method="POST">
+        <div><p><b>Username</b></p></div>
+        <div><input type="text" id="username" name="username" /></div>
+
+        <div><p><b>Password</b></p></div>
+        <div><input type="password" id="password" name="password" /></div>
+        <br></br>
+        <button type="submit" onclick= > Log In</button>
+
+    </form>
+</div>
+
+{% endblock %}
